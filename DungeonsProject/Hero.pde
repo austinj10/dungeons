@@ -11,8 +11,9 @@ class Hero extends GameObject{
   }
  
   void show(){    
-  fill(shadow);
+  fill(unity);
   strokeWeight(3);
+  stroke(shadow);
   ellipse(location.x,location.y,50,50);
   }
 
@@ -31,6 +32,26 @@ class Hero extends GameObject{
     //stop
     if (!leftkey && !rightkey) velocity.x = 0;
     if (!downkey && !upkey) velocity.y = 0;
+    
+    //check exits
+    if (northroom != #FFFFFF && location.y <= 60 && location.x >= width/2-50 && location.x <= width/2+50){
+      roomY--;
+      location = new PVector(width/2,height-65);
+    }
+    if (eastroom != #FFFFFF && location.x >= width-75 && location.y >= height/2-50 && location.y <= height/2+50){//works
+      roomX++;
+      location = new PVector(80,height/2);
+    }
+    if (southroom != #FFFFFF && location.y >= height-60 && location.x >= width/2-50 && location.x <= width/2+50){//works
+      roomY++;
+      location = new PVector(width/2,65);
+    }
+    if (westroom != #FFFFFF && location.x <= 75 && location.y >= height/2-50 && location.y <= height/2+50){
+      roomX--;
+      location = new PVector(width-80,height/2);
+    }
+    
+    
   }
   
 }
