@@ -79,13 +79,6 @@ void drawDarkness(){
   } 
 }
   
-  ////darkness
-  //int ii = 0;
-  //while (ii < darkness.size()){
-  //  darkness.get(i).act();
-  //  darkness.get(i).show();
-  //  i++;
-  
 
 void drawMiniMap(){
   float opacity = 0;
@@ -104,23 +97,10 @@ void drawMiniMap(){
      }
   }
   //dot
-  if (myHero.roomX == 1 && myHero.roomY == 1){
-      fill(255);
-      square(x+55,y+45,15);
-    }
-    //if (eastroom != #FFFFFF && location.x >= width-75 && location.y >= height/2-50 && location.y <= height/2+50){//works
-    //  roomX++;
-    //  location = new PVector(80,height/2);
-    //}
-    //if (southroom != #FFFFFF && location.y >= height-60 && location.x >= width/2-50 && location.x <= width/2+50){//works
-    //  roomY++;
-    //  location = new PVector(width/2,65);
-    //}
-    //if (westroom != #FFFFFF && location.x <= 75 && location.y >= height/2-50 && location.y <= height/2+50){
-    //  roomX--;
-    //  location = new PVector(width-80,height/2);
-    //}
+   fill(255);
+   square(myHero.roomX*15+40,myHero.roomY*15+40,15);
 }
+  
   
 
 

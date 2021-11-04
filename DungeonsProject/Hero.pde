@@ -2,12 +2,14 @@ class Hero extends GameObject{
  
   float speed; 
   int roomX, roomY;
+  Weapon myWeapon;
   
   Hero(){
     super();//gameobject constructor
     speed = 5;
     roomX = 1;
     roomY = 1;
+    myWeapon = new Weapon();
   }
  
   void show(){    
@@ -51,6 +53,9 @@ class Hero extends GameObject{
       location = new PVector(width-80,height/2);
     }
     
+    //weapon
+    myWeapon.update();
+    if (space) myWeapon.shoot();
     
   }
   
