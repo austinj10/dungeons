@@ -5,7 +5,7 @@ class Weapon{
   
   Weapon(){
    shotTimer = 0;
-   threshold = 30;
+   threshold = 20;
    bulletSpeed = 5;
   }
   

@@ -4,7 +4,6 @@ void game(){
   drawRoom();
   drawGameObjects();
   drawDarkness();
-  //drawLightLayer();
   drawMiniMap();
   
   //int i = 0;
@@ -57,15 +56,15 @@ void drawRoom(){
 }
 
 void drawGameObjects(){
-  int i = 0;
-  while ( i < myObjects.size()) {
+  for (int i = 0; i < myObjects.size(); i++){
     GameObject myObj = myObjects.get(i);
-    myObj.show();
-    myObj.act();
-  if (myObj.hp == 0) {
-      myObjects.remove(i); 
-    } else {
-      i++;
+    if (myObj.roomX == myHero.roomX && myObj.roomY == myHero.roomY){
+      myObj.show();
+      myObj.act();
+      if (myObj.hp <= 0) {
+        myObjects.remove(i); 
+        i--;
+      }
     }
   }
 }

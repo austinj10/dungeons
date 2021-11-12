@@ -53,13 +53,14 @@ void setup(){
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();
   myObjects.add(myHero);
+  myObjects.add(new Enemy());
   
   //map
   map = loadImage("map.png");
 
   //darkness
   darkness = new ArrayList<DarknessCell>(1000);
-  float size = 3;
+  float size = 4;
   int x = 0;
   int y = 0;
   while(y < height){
@@ -93,19 +94,19 @@ void draw(){
 
 
 void keyPressed() {
-  if (keyCode == UP) upkey = true; 
-  if (keyCode == DOWN) downkey = true; 
-  if (keyCode == LEFT) leftkey = true; 
-  if (keyCode == RIGHT) rightkey = true; 
+  if (keyCode == 'w' || keyCode == 'W') upkey = true; 
+  if (keyCode  == 's' || keyCode == 'S') downkey = true; 
+  if (keyCode  == 'a' || keyCode == 'A') leftkey = true; 
+  if (keyCode == 'd' || keyCode == 'D') rightkey = true; 
   if (key == ' ') spacekey = true;
 }
 
 
 
 void keyReleased() {
-  if (keyCode == UP) upkey = false; 
-  if (keyCode == DOWN) downkey = false; 
-  if (keyCode == LEFT) leftkey = false; 
-  if (keyCode == RIGHT) rightkey = false; 
+  if (keyCode == 'w' || keyCode == 'W') upkey = false; 
+  if (keyCode == 's' || keyCode == 'S') downkey = false; 
+  if (keyCode == 'a' || keyCode == 'A') leftkey = false; 
+  if (keyCode == 'd' || keyCode == 'D') rightkey = false; 
   if (key == ' ') spacekey = false;
 }

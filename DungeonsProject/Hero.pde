@@ -1,7 +1,6 @@
 class Hero extends GameObject{
  
   float speed; 
-  int roomX, roomY;
   Weapon myWeapon;
   
   Hero(){
@@ -9,14 +8,15 @@ class Hero extends GameObject{
     speed = 5;
     roomX = 1;
     roomY = 1;
-    myWeapon = new Weapon();
+    size = 50;
+    myWeapon = new Shotgun();
   }
  
   void show(){    
   fill(unity);
   strokeWeight(3);
   stroke(shadow);
-  ellipse(location.x,location.y,50,50);
+  ellipse(location.x,location.y,size,size);
   }
 
   void act(){
@@ -55,7 +55,7 @@ class Hero extends GameObject{
     
     //weapon
     myWeapon.update();
-    if (space) myWeapon.shoot();
+    if (spacekey) myWeapon.shoot();
     
   }
   
