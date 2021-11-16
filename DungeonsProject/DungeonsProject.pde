@@ -54,6 +54,9 @@ void setup(){
   myHero = new Hero();
   myObjects.add(myHero);
   myObjects.add(new Enemy());
+  myObjects.add(new Follower(1,2));
+  myObjects.add(new Follower(2,1));
+  myObjects.add(new Turret(3,1));
   
   //map
   map = loadImage("map.png");

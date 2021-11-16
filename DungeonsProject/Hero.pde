@@ -1,22 +1,33 @@
 class Hero extends GameObject{
- 
+
   float speed; 
   Weapon myWeapon;
+  boolean immunity;
+  int immunitytimer;
   
   Hero(){
     super();//gameobject constructor
+    hp = 5;
     speed = 5;
     roomX = 1;
     roomY = 1;
     size = 50;
-    myWeapon = new Shotgun();
+    myWeapon = new Pistol();
+    
+    immunity = true;
+    immunitytimer = 0;
   }
  
   void show(){    
-  fill(unity);
-  strokeWeight(3);
-  stroke(shadow);
-  ellipse(location.x,location.y,size,size);
+    if (immunity == true){
+      fill(255);
+    } else {
+      fill(unity);
+    }
+
+    strokeWeight(3);
+    stroke(shadow);
+    ellipse(location.x,location.y,size,size);
   }
 
   void act(){
@@ -57,7 +68,32 @@ class Hero extends GameObject{
     myWeapon.update();
     if (spacekey) myWeapon.shoot();
     
+    //immunity
+    if (immunity == true){
+      immunitytimer++;
+    } 
+    if (immunitytimer > 150){
+      immunity = false;
+      immunitytimer = 0;
+    }
+    
+  //lose lives
+  int i = 0;  
+    while (i < myObjects.size()) {
+      GameObject obj = myObjects.get(i);
+      if (obj instanceof Enemy && roomX == obj.roomX && roomY == obj.roomY){//|| obj instanceof Bullet && obj.Enemybullet) {
+        if (dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2) {
+          if (immunity == false) {
+            myHero.hp--;
+            immunitytimer = 0;
+            immunity = true;
+            //for (int j=0; j<random(10, 20); j++) myObjects.add(new particles(location.x, location.y, 245));
+            }
+         }
+      }
+      i++;
+    }
+    if (myHero.hp == 0) mode = gameover;
   }
-  
 }
   

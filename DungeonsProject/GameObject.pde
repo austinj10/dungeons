@@ -4,6 +4,7 @@ class GameObject {
   PVector velocity;
   int hp;
   int size;
+  boolean UFOBullet;
   
   GameObject(){
     location = new PVector (width/2, height/2);

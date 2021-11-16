@@ -64,6 +64,7 @@ void drawGameObjects(){
       if (myObj.hp <= 0) {
         myObjects.remove(i); 
         i--;
+        //println(1);
       }
     }
   }
@@ -98,6 +99,10 @@ void drawMiniMap(){
   //dot
    fill(255);
    square(myHero.roomX*15+40,myHero.roomY*15+40,15);
+   
+   //hero text
+   textSize(50);
+   text(myHero.hp,25,height-25);
 }
   
   

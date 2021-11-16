@@ -5,11 +5,12 @@ class Bullet extends GameObject {
 
   //constructor(s)
   Bullet() {
-    timer = 35;
+    timer = 25;
     location = new PVector(myHero.location.x, myHero.location.y);
     velocity = new PVector(0,0);
     velocity.setMag(10);
     size = 10;
+    UFOBullet = false;
     //velocity.add(ship.velocity);
   }
   
@@ -22,6 +23,7 @@ class Bullet extends GameObject {
       stone = color1;
       roomX = myHero.roomX;
       roomY = myHero.roomY;
+      UFOBullet = true;
       }
 
   void show() {
