@@ -5,11 +5,11 @@ class BulletTurret extends GameObject{
   //constructor(s)
   BulletTurret() {
     timer = 25;
-    location = new PVector(myHero.location.x, myHero.location.y);
+    location = new PVector(location.x, location.y);
     velocity = new PVector(10,10);
     velocity.setMag(10);
     size = 10;
-    UFOBullet = false;
+    UFOBullet = true;
   }
   
       
@@ -26,11 +26,11 @@ class BulletTurret extends GameObject{
   void show() {
       stroke(0);
       fill(0);
-      ellipse(location.x, location.y, 50, 50);
+      ellipse(location.x, location.y, size, size);
   }
 
   void act() {
-    super.act();
+    location.add(velocity);
     timer--;
     if (timer == 0) {
       hp = 0;

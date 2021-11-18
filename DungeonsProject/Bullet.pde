@@ -37,6 +37,6 @@ class Bullet extends GameObject {
     timer--;
     if (timer == 0) {
       hp = 0;
-    }
+    } 
   }
 }

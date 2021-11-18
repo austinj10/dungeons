@@ -19,7 +19,7 @@ class Enemy extends GameObject {
   
   
   void show(){
-    fill(255);
+    fill(175);
     ellipse(location.x,location.y,size,size);
     fill(0);
     
@@ -34,12 +34,13 @@ class Enemy extends GameObject {
     int i = 0;
     while(i < myObjects.size()){
       GameObject myObj = myObjects.get(i);
-      if (myObj instanceof Bullet && !myObj.UFOBullet){ //myOjBulletTurret){ !BulletTurret){
+      if (myObj instanceof Bullet){ //myOjBulletTurret){ !BulletTurret){
         float d = dist(myObj.location.x,myObj.location.y,location.x,location.y);
         if (d <= size/2 + myObj.size/2){
           hp = hp - int(myObj.velocity.mag());
           if (hp <= 0){
             myObj.hp = 0;
+            for (int j=0; j<random(10, 20); j++) myObjects.add(new particles(location.x, location.y, 125));
           }  
         }
       }

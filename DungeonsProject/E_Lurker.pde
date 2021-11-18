@@ -1,13 +1,13 @@
 class Lurker extends Enemy {
   Lurker(int x, int y) {
-    super(100, 50, x, y);
+    super(300, 25, x, y);
   }
   
   void show() {
-    fill(255);
-    ellipse(location.x, location.y, 30, 30);
+    fill(100);
+    ellipse(location.x, location.y, 25, 25);
     fill(0);
-    textSize(20);
+    textSize(15);
     text(hp, location.x, location.y);
   }
   void act() {
@@ -18,6 +18,6 @@ class Lurker extends Enemy {
     } else {
       velocity = new PVector(0,0);
     }
-    velocity.setMag(2.5);
+    velocity.setMag(3);
   }
 }
