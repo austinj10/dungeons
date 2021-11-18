@@ -8,23 +8,23 @@ class Bullet extends GameObject {
     timer = 25;
     location = new PVector(myHero.location.x, myHero.location.y);
     velocity = new PVector(0,0);
-    velocity.setMag(10);
+    //velocity.setMag(10);
     size = 10;
     UFOBullet = false;
-    //velocity.add(ship.velocity);
   }
   
     Bullet(PVector mouse, int color1, int size1) {
       timer = 35;
       location = new PVector(myHero.location.x, myHero.location.y);
       velocity = mouse;
-      velocity.setMag(10);
+      //velocity.setMag(20);
       size = size1;
       stone = color1;
       roomX = myHero.roomX;
       roomY = myHero.roomY;
-      UFOBullet = true;
+      UFOBullet = false;
       }
+  
 
   void show() {
       stroke(0);

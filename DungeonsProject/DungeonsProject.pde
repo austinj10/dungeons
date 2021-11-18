@@ -57,6 +57,7 @@ void setup(){
   myObjects.add(new Follower(1,2));
   myObjects.add(new Follower(2,1));
   myObjects.add(new Turret(3,1));
+  myObjects.add(new Lurker(1,3));
   
   //map
   map = loadImage("map.png");

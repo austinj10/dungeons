@@ -34,7 +34,7 @@ class Enemy extends GameObject {
     int i = 0;
     while(i < myObjects.size()){
       GameObject myObj = myObjects.get(i);
-      if (myObj instanceof Bullet){
+      if (myObj instanceof Bullet && !myObj.UFOBullet){ //myOjBulletTurret){ !BulletTurret){
         float d = dist(myObj.location.x,myObj.location.y,location.x,location.y);
         if (d <= size/2 + myObj.size/2){
           hp = hp - int(myObj.velocity.mag());

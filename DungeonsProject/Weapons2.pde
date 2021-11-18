@@ -19,7 +19,7 @@ class Shotgun extends Weapon {
 
 class Pistol extends Weapon {
    Pistol(){
-    super(10,10);
+    super(40,7);
    }
 }
 
@@ -27,7 +27,7 @@ class Pistol extends Weapon {
 
 class Sniper extends Weapon {
    Sniper(){
-    super(80,20);
+    super(100,20);
    }
 }
 
@@ -35,6 +35,6 @@ class Sniper extends Weapon {
 
 class MachineGun extends Weapon {
    MachineGun(){
-    super(10,50);
+    super(10,9);
    }
 }
