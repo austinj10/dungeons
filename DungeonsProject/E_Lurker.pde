@@ -18,6 +18,6 @@ class Lurker extends Enemy {
     } else {
       velocity = new PVector(0,0);
     }
-    velocity.setMag(3);
+    velocity.setMag(2.25);
   }
 }

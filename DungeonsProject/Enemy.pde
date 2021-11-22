@@ -8,6 +8,15 @@ class Enemy extends GameObject {
     size = 75;
   }
   
+   Enemy(int x, int y){
+    location = new PVector(width/2,height/2);
+    velocity = new PVector(0,0);
+    hp = 100;
+    roomX = x; 
+    roomY = y;
+    size = 75;
+  }
+  
   Enemy(int _hp, int s, int x, int y){
     location = new PVector(width/2,height/2);
     velocity = new PVector(0,0);

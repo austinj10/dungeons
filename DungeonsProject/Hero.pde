@@ -81,15 +81,13 @@ class Hero extends GameObject{
   int i = 0;  
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
-      if (obj instanceof Enemy && roomX == obj.roomX && roomY == obj.roomY){//|| obj instanceof Bullet && obj.Enemybullet) {
-        if (dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2) {
+      if (obj instanceof Enemy && isCollidingWith(obj) && inRoomWith(obj)){
           if (immunity == false) {
             myHero.hp--;
             immunitytimer = 0;
             immunity = true;
             //for (int j=0; j<random(10, 20); j++) myObjects.add(new particles(location.x, location.y, 245));
             }
-         }
       }
       i++;
     }

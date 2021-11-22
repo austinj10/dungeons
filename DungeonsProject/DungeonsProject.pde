@@ -27,13 +27,23 @@ color shadow = #302222;
 color unity = #473B2B;
 color stone = #5E4B34;
 color dirt = #6B5B45;
+color black = #000000;
+color white = #FFFFFF;
+color yellow = #DBFF56;
+color green = #2EA62F;
+color blue = #2E59A6;
+color red = #931212;
+color orange = #E8980A;
+color purple = #D60AE8;
 
 //text and font
 PFont VampireZone;
 
 //images and rooms
 PImage map;
+PImage map2;
 color northroom, eastroom, southroom, westroom;
+
 
 void setup(){
   mode = intro;
@@ -53,15 +63,10 @@ void setup(){
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();
   myObjects.add(myHero);
-  myObjects.add(new Enemy());
-  myObjects.add(new Follower(1,2));
-  myObjects.add(new Follower(2,1));
-  myObjects.add(new Turret(3,1));
-  myObjects.add(new Lurker(1,3));
-  myObjects.add(new Spawner(1,4));
   
   //map
-  map = loadImage("map.png");
+  map = loadImage("map2.0.png");
+  map2 = loadImage("map.png");
 
   //darkness
   darkness = new ArrayList<DarknessCell>(1000);
@@ -75,6 +80,36 @@ void setup(){
        x = 0;
        y += size;
      }
+  }
+  
+  //loading enemies on map
+  x = 0;
+  y = 0;
+  while (y < map.height){
+    color roomColor = map.get(x,y);
+    if (roomColor == orange){
+      myObjects.add(new Follower(x,y));
+    }
+    if (roomColor == blue){
+      myObjects.add(new Enemy(x,y));
+    }
+    if (roomColor == red){
+      myObjects.add(new Turret(x,y));
+    }
+    if (roomColor == green){
+      myObjects.add(new Lurker(x,y));
+    }
+    if (roomColor == yellow){
+      myObjects.add(new Spawner(x,y));
+    }
+    if (roomColor == purple){
+      //add more
+    }
+    x++;
+    if (x == map.width){
+      x = 0;
+      y++;
+    }
   }
 }
 

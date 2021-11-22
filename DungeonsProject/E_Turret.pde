@@ -4,8 +4,7 @@ class Turret extends Enemy{
   float x;
   
   Turret(int x, int y){
-    super(250,50,x,y);  
-    hp = 10000;
+    super(500,50,x,y);  
   }
   
   void show(){

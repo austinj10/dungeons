@@ -19,7 +19,7 @@ class Spawner extends Enemy {
     timer++;
     
     if (timer > 175){
-     myObjects.add(new Follower(1,4)); 
+     myObjects.add(new Follower(roomX,roomY)); 
      timer = 0;
     } 
   }

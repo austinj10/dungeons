@@ -26,4 +26,13 @@ class GameObject {
     if (location.y > height-60) location.y = height-60;
   }
     
+ //simplify code
+ boolean inRoomWith(GameObject obj){
+   return(roomX == obj.roomX && roomY == obj.roomY);
+   }
+    
+  boolean isCollidingWith(GameObject obj){
+   return(dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2);
+  }
+    
 }
