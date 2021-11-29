@@ -1,9 +1,0 @@
-void win(){
-  
-}
-
-
-
-void winClicks(){
-  
-}
