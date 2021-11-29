@@ -1,30 +1,29 @@
 class particles extends GameObject { 
   
   int time;
-  int shade;
+  int colour;
+  int size;
   
-  particles(float x, float y, int colour){
+  particles(int _s, float x, float y, color c){
     hp = 1;
     location = new PVector(x,y);
-    velocity = new PVector(random(3, 5), random(3, 5));
+    velocity = new PVector(3,3);
     velocity.rotate(random(360));//180 degrees change
-    velocity.setMag(10);
+    velocity.setMag(random(-2,2));
     time = 250;
-    size = 7;
-    hp = 1;
-    shade = colour;
+    size = _s;
+    colour = c;
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
   }
   
   void show(){
     noStroke();
-    fill(shade, time);
+    fill(colour, time);
     rect(location.x,location.y,size,size);
-    //square(location.x, location.y, size);
   }
   
   void act(){
-    noStroke();
-    fill(255, time);
     super.act();
     time = time - 8;
     if (time <= 0) hp = 0;

@@ -6,10 +6,9 @@ class BulletTurret extends GameObject{
   BulletTurret() {
     timer = 25;
     location = new PVector(location.x, location.y);
-    velocity = new PVector(10,10);
+    velocity = new PVector(myHero.velocity.x+(myHero.location.x-location.x), myHero.velocity.y+(myHero.location.y-location.y));
     velocity.setMag(10);
     size = 10;
-    UFOBullet = true;
   }
   
       
@@ -20,17 +19,18 @@ class BulletTurret extends GameObject{
       velocity = new PVector(velx, vely);
       velocity.setMag(7);
       size = 10;
-      UFOBullet = true;
+      
   }
 
   void show() {
       stroke(0);
       fill(0);
       ellipse(location.x, location.y, size, size);
+      println("a");
   }
 
   void act() {
-    location.add(velocity);
+    //location.add(velocity);
     timer--;
     if (timer == 0) {
       hp = 0;

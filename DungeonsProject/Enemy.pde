@@ -43,15 +43,14 @@ class Enemy extends GameObject {
     int i = 0;
     while(i < myObjects.size()){
       GameObject myObj = myObjects.get(i);
-      if (myObj instanceof Bullet){ //myOjBulletTurret){ !BulletTurret){
-        float d = dist(myObj.location.x,myObj.location.y,location.x,location.y);
-        if (d <= size/2 + myObj.size/2){
+      if (myObj instanceof Bullet && isCollidingWith(myObj)){ //myObjBulletTurret){ !BulletTurret){
           hp = hp - int(myObj.velocity.mag());
-          if (hp <= 0){
-            myObj.hp = 0;
-            for (int j=0; j<random(10, 20); j++) myObjects.add(new particles(location.x, location.y, 125));
-          }  
-        }
+          myObj.hp = 0;
+          if (hp <= 0){ 
+            explode(size,500,red);
+            myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+          }
+              
       }
       i++;
     }

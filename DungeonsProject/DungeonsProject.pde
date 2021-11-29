@@ -44,6 +44,20 @@ PImage map;
 PImage map2;
 color northroom, eastroom, southroom, westroom;
 
+//GIF
+AnimatedGIF myGIF;
+AnimatedGIF manUP;
+AnimatedGIF manDOWN;
+AnimatedGIF manLEFT;
+AnimatedGIF manRIGHT;
+
+AnimatedGIF heart;
+
+//settings: dropped items
+final int AMMO = 0;
+final int HEALTH = 1;
+final int GUN = 2;
+
 
 void setup(){
   mode = intro;
@@ -57,7 +71,13 @@ void setup(){
   VampireZone = createFont("Vampire Zone.ttf",200);
   
   //gif
-  myGIF = new AnimatedGIF(10,"frame_" , "_delay-0.07s.gif", width/2, height/2, width, height);
+  myGIF = new AnimatedGIF(35, 15, "frame_" , "_delay-0.07s.gif");
+  manUP = new AnimatedGIF(4, 15, "man/_up/sprite_", ".png");
+  manDOWN = new AnimatedGIF(4, 15, "man/_down/sprite_", ".png");
+  manLEFT = new AnimatedGIF(4, 15, "man/_left/sprite_", ".png");
+  manRIGHT = new AnimatedGIF(4, 15, "man/_right/sprite_", ".png");
+  
+  heart = new AnimatedGIF(1, 15, "heart" , ".png");
   
   //create objects
   myObjects = new ArrayList<GameObject>(1000);

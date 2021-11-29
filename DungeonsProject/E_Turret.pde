@@ -5,6 +5,7 @@ class Turret extends Enemy{
   
   Turret(int x, int y){
     super(500,50,x,y);  
+    shotTimer = threshold = 200;
   }
   
   void show(){
@@ -17,9 +18,10 @@ class Turret extends Enemy{
   
   void act(){
      super.act(); 
-     
+
      shotTimer++;
      if (shotTimer>threshold) {
+      myObjects.add(new BulletTurret());
       shotTimer = 0;
     } 
   

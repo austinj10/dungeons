@@ -5,6 +5,7 @@ class GameObject {
   int hp;
   int size;
   boolean UFOBullet;
+  color c;
   
   GameObject(){
     location = new PVector (width/2, height/2);
@@ -27,12 +28,20 @@ class GameObject {
   }
     
  //simplify code
- boolean inRoomWith(GameObject obj){
-   return(roomX == obj.roomX && roomY == obj.roomY);
+ boolean inRoomWith(GameObject myObj){
+   return(roomX == myObj.roomX && roomY == myObj.roomY);
    }
     
-  boolean isCollidingWith(GameObject obj){
-   return(dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2);
+  boolean isCollidingWith(GameObject myObj){
+   float d = dist(location.x, location.y,myObj.location.x, myObj.location.y); 
+    return(inRoomWith(myObj) && d < size/2 + myObj.size/2);
   }
-    
+  
+  void explode(int s, int n, int c){
+    int i = 0;
+    while (i < n){
+      myObjects.add(new particles(s,location.x, location.y, c));
+      i++;
+    }
+  }
 }

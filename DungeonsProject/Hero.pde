@@ -4,6 +4,7 @@ class Hero extends GameObject{
   Weapon myWeapon;
   boolean immunity;
   int immunitytimer;
+  AnimatedGIF currentAction;
   
   Hero(){
     super();//gameobject constructor
@@ -12,10 +13,11 @@ class Hero extends GameObject{
     roomX = 1;
     roomY = 1;
     size = 50;
-    myWeapon = new Pistol();
-    
+    myWeapon = new MachineGun();
     immunity = true;
     immunitytimer = 0;
+    //action
+    currentAction = manDOWN; 
   }
  
   void show(){    
@@ -24,10 +26,7 @@ class Hero extends GameObject{
     } else {
       fill(unity);
     }
-
-    strokeWeight(3);
-    stroke(shadow);
-    ellipse(location.x,location.y,size,size);
+    currentAction.show(location.x, location.y, size/1.5, size);
   }
 
   void act(){
@@ -45,6 +44,14 @@ class Hero extends GameObject{
     //stop
     if (!leftkey && !rightkey) velocity.x = 0;
     if (!downkey && !upkey) velocity.y = 0;
+    
+    if (abs(velocity.y) > abs(velocity.x)){
+      if(velocity.y > 0) currentAction = manDOWN;
+      else currentAction = manUP;
+    } else {
+      if (velocity.x > 0) currentAction = manRIGHT;
+      else currentAction = manLEFT;
+    }
     
     //check exits
     if (northroom != #FFFFFF && location.y <= 60 && location.x >= width/2-50 && location.x <= width/2+50){
@@ -72,7 +79,7 @@ class Hero extends GameObject{
     if (immunity == true){
       immunitytimer++;
     } 
-    if (immunitytimer > 150){
+    if (immunitytimer > 90){
       immunity = false;
       immunitytimer = 0;
     }
@@ -81,17 +88,33 @@ class Hero extends GameObject{
   int i = 0;  
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
-      if (obj instanceof Enemy && isCollidingWith(obj) && inRoomWith(obj)){
+      if (obj instanceof Enemy && isCollidingWith(obj)){//|| obj instanceof Bullet && obj.Enemybullet) {
+        if (dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2) {
           if (immunity == false) {
             myHero.hp--;
-            immunitytimer = 0;
+            explode(500,110,white);
             immunity = true;
-            //for (int j=0; j<random(10, 20); j++) myObjects.add(new particles(location.x, location.y, 245));
             }
+         }
       }
-      i++;
-    }
+      if (obj instanceof DroppedItem && isCollidingWith(obj)){
+        DroppedItem item = (DroppedItem) obj;
+        if(item.type == GUN){
+          myWeapon = item.w;
+          item.hp = 0;
+      }
+        if(item.type == AMMO){
+          //myWeapon = item.w;
+          //item.hp = 0;
+        }
+        if(item.type == HEALTH){
+          myHero.hp = myHero.hp + 1;
+          item.hp = 0;
+        }
+      }
+     i++;
     if (myHero.hp == 0) mode = gameover;
+    }
   }
-}
+  }
   
