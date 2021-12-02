@@ -1,29 +1,29 @@
-class Turret extends Enemy{
-  
+class Turret extends Enemy {
+
   int shotTimer, threshold;
   float x;
-  
-  Turret(int x, int y){
-    super(500,50,x,y);  
+
+  Turret(int x, int y) {
+    super(500, 50, x, y);  
     shotTimer = threshold = 200;
+    xp = 2;
   }
-  
-  void show(){
+
+  void show() {
     fill(255);
-    ellipse(location.x,location.y,50,50);
+    ellipse(location.x, location.y, 50, 50);
     fill(0);
     textSize(20);
-    text(hp,location.x,location.y);
+    text(hp, location.x, location.y);
   }
-  
-  void act(){
-     super.act(); 
 
-     shotTimer++;
-     if (shotTimer>threshold) {
+  void act() {
+    super.act(); 
+
+    shotTimer++;
+    if (shotTimer>threshold) {
       myObjects.add(new BulletTurret());
       shotTimer = 0;
-    } 
-  
+    }
   }
 }

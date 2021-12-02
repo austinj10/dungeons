@@ -1,6 +1,6 @@
-class BulletTurret extends GameObject{
+class BulletTurret extends GameObject {
   int timer;
-  
+
 
   //constructor(s)
   BulletTurret() {
@@ -10,23 +10,22 @@ class BulletTurret extends GameObject{
     velocity.setMag(10);
     size = 10;
   }
-  
-      
+
+
   BulletTurret(float locx, float locy, float velx, float vely) {
-      timer = 60;
-      hp = 1;
-      location = new PVector(locx, locy);
-      velocity = new PVector(velx, vely);
-      velocity.setMag(7);
-      size = 10;
-      
+    timer = 60;
+    hp = 1;
+    location = new PVector(locx, locy);
+    velocity = new PVector(velx, vely);
+    velocity.setMag(7);
+    size = 10;
   }
 
   void show() {
-      stroke(0);
-      fill(0);
-      ellipse(location.x, location.y, size, size);
-      println("a");
+    stroke(0);
+    fill(0);
+    ellipse(location.x, location.y, size, size);
+    println("a");
   }
 
   void act() {
@@ -36,5 +35,4 @@ class BulletTurret extends GameObject{
       hp = 0;
     }
   }
- 
 }

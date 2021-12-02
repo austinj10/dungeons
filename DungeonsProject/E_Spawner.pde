@@ -1,13 +1,14 @@
 class Spawner extends Enemy {
   int timer;
-  
-  
-  Spawner(int x, int y){
-    super(1000,175,x,y);
+
+
+  Spawner(int x, int y) {
+    super(1000, 175, x, y);
     timer = 0;
+    xp = 3;
   }
-    
- void show() {
+
+  void show() {
     fill(0);
     ellipse(location.x, location.y, 175, 175);
     fill(255);
@@ -17,20 +18,10 @@ class Spawner extends Enemy {
   void act() {
     super.act();
     timer++;
-    
-    if (timer > 175){
-     myObjects.add(new Follower(roomX,roomY)); 
-     timer = 0;
-    } 
+
+    if (timer > 175) {
+      myObjects.add(new Follower(roomX, roomY)); 
+      timer = 0;
+    }
   }
-    
-    
-  
-  
-  
-  
-  
-  
-  
-  
 }
