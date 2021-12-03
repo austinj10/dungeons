@@ -55,6 +55,7 @@ class Enemy extends GameObject {
         if (hp <= 0) { 
           explode(size, 500, red);
           myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+          myObjects.add(new Message(location.x,location.y,"+"+xp));
           myHero.xp = myHero.xp + xp;
         }
       }
