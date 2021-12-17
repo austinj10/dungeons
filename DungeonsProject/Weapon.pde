@@ -1,7 +1,6 @@
-class Weapon {
+class Weapon extends GameObject{
   int shotTimer;
   int threshold;
-  int bulletSpeed;
 
   Weapon() {
     shotTimer = 0;
@@ -22,7 +21,7 @@ class Weapon {
   void shoot() {
     if (shotTimer >= threshold) {
       PVector aimVector = new PVector(mouseX-myHero.location.x, mouseY-myHero.location.y);
-      aimVector.setMag(bulletSpeed);
+      aimVector.setMag(bulletSpeed+dmg);
       myObjects.add(new Bullet(aimVector, stone, 10));
       shotTimer = 0;
     }

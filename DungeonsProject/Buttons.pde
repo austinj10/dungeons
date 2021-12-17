@@ -43,7 +43,7 @@ class Button extends GameObject {
     text(text, x, y);
     popMatrix();
 
-    if (mouseReleased == true && mouseX > x - w/2 && mouseY > y-h/2 && mouseY < y + h/2) {
+    if (mouseReleased == true && mouseX > x - w/2 && mouseX < x + w/2 && mouseY > y-h/2 && mouseY < y + h/2) {
       clicked = true;
     } else {
       clicked = false;

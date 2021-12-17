@@ -2,7 +2,6 @@ class Bullet extends GameObject {
 
   int timer;
 
-
   //constructor(s)
   Bullet() {
     timer = 25;

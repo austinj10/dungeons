@@ -11,10 +11,12 @@ class Hero extends GameObject {
     speed = 5;
     roomX = 1;
     roomY = 1;
-    size = 50;
+    sizeX = 30;
+    sizeY = 55;
     myWeapon = new MachineGun();
     immunity = true;
     immunitytimer = 0;
+    damage = bulletSpeed;
     //action
     currentAction = manDOWN;
   }
@@ -25,7 +27,7 @@ class Hero extends GameObject {
     } else {
       fill(unity);
     }
-    currentAction.show(location.x, location.y, size/1.5, size);
+    currentAction.show(location.x, location.y, sizeX, sizeY);
   }
 
   void act() {
@@ -96,15 +98,25 @@ class Hero extends GameObject {
           }
         }
       }
+      if (obj instanceof BulletTurret && isCollidingWith(obj)) {//|| obj instanceof Bullet && obj.Enemybullet) {
+        if (dist(myHero.location.x, myHero.location.y, obj.location.x, obj.location.y) <= size/2 + obj.size/2) {
+          if (immunity == false) {
+            myHero.hp--;
+            explode(500, 110, white);
+            immunity = true;
+          }
+        }
+      }
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {
         DroppedItem item = (DroppedItem) obj;
         if (item.type == GUN) {
           myWeapon = item.w;
           item.hp = 0;
         }
-        if (item.type == AMMO) {
-          //myWeapon = item.w;
-          //item.hp = 0;
+        if (item.type == SIZE) {
+          myHero.sizeX = myHero.sizeX - 2;
+          myHero.sizeY = myHero.sizeY - 3;
+          item.hp = 0;
         }
         if (item.type == HEALTH) {
           hp++;
@@ -115,5 +127,18 @@ class Hero extends GameObject {
       i++;
       if (myHero.hp == 0) mode = gameover;
     }
+  }
+
+  void cleanUp() {
+    int i = 0;
+    while (i< myObjects.size()) {
+      GameObject obj = myObjects.get(i);
+      if (obj instanceof Bullet || obj instanceof Message)
+        if (!inRoomWith(obj)) {
+          myObjects.remove(i);
+          i--;
+        }
+    }
+    i++;
   }
 }

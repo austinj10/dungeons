@@ -4,10 +4,15 @@ class GameObject {
   PVector velocity;
   int hp, hpMAX;
   int size;
+  int sizeX;
+  int sizeY;
   boolean UFOBullet;
   color c;
   float speed;
   int xp;
+  int bulletSpeed;
+  int damage;
+
 
   GameObject() {
     location = new PVector (width/2, height/2);
@@ -22,8 +27,8 @@ class GameObject {
     location.add(velocity);
 
     //hitting wall
-    if (location.x < 75) location.x = 75;
-    if (location.x > width-75) location.x = width-75;
+    if (location.x < 65) location.x = 65;
+    if (location.x > width-65) location.x = width-5;
     if (location.y < 60) location.y = 60;
     if (location.y > height-60) location.y = height-60;
   }
@@ -35,8 +40,13 @@ class GameObject {
 
   boolean isCollidingWith(GameObject myObj) {
     float d = dist(location.x, location.y, myObj.location.x, myObj.location.y); 
-    return(inRoomWith(myObj) && d < size/2 + myObj.size/2 && hp > 0);
+    return(inRoomWith(myObj) && d < size/2 + myObj.size/2 && hp > 0);//maybe switch d to myHero.sizeX
   }
+
+  //boolean isCollidingWith_(GameObject myObj) {
+  //  float d = dist(location.x, location.y, myObj.location.x, myObj.location.y); 
+  //  return(inRoomWith(myObj) && d < myHero.sizeX/2.2 + myObj.size/2 && hp > 0);//maybe switch d to myHero.sizeX
+  //}
 
   void explode(int s, int n, int c) {
     int i = 0;

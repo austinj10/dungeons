@@ -3,14 +3,13 @@ class Spawner extends Enemy {
 
 
   Spawner(int x, int y) {
-    super(1000, 175, x, y);
+    super(600, 175, x, y);
     timer = 0;
     xp = 3;
   }
 
   void show() {
-    fill(0);
-    ellipse(location.x, location.y, 175, 175);
+    blackhole.show(location.x,location.y,size*1.25,size*1.25);
     fill(255);
     textSize(20);
     text(hp, location.x, location.y);
@@ -23,5 +22,10 @@ class Spawner extends Enemy {
       myObjects.add(new Follower(roomX, roomY)); 
       timer = 0;
     }
+    
+    //size = size + 1;
+    //if (size >= 300){
+    // size = size - 2; 
+    //} 
   }
 }
