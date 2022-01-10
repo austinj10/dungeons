@@ -10,6 +10,7 @@ class GameObject {
   color c;
   float speed;
   int xp;
+  int enemynumber;
   int bulletSpeed;
   int damage;
 
@@ -28,7 +29,7 @@ class GameObject {
 
     //hitting wall
     if (location.x < 65) location.x = 65;
-    if (location.x > width-65) location.x = width-5;
+    if (location.x > width-65) location.x = width-65;
     if (location.y < 60) location.y = 60;
     if (location.y > height-60) location.y = height-60;
   }

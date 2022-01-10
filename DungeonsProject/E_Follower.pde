@@ -5,7 +5,7 @@ class Follower extends Enemy {
   
   Follower(int x, int y) {
     super(100, 50, x, y);
-    xp = 10;
+    xp = 1;
     currentAction = skeletonDOWN;
   }
 

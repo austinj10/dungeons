@@ -8,4 +8,5 @@ void gameover() {
 
 
 void gameoverClicks() {
+  setup();
 }

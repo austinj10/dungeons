@@ -53,6 +53,7 @@ class Enemy extends GameObject {
         hp = hp - int(myObj.velocity.mag());
         myObj.hp = 0;
         if (hp <= 0) { 
+          enemynumber = enemynumber + 1;
           explode(size, 500, red);
           myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
           myObjects.add(new Message(location.x, location.y, roomX, roomY, "+"+xp));
@@ -60,6 +61,10 @@ class Enemy extends GameObject {
         }
       }
       i++;
+    }
+    
+    if (enemynumber == 5){
+      mode = win;
     }
   }
 }
